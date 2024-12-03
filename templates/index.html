@@ -7,9 +7,20 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
     <body>
-        <h1>Choisissez le jeu</h1>
-        <a href="/traduction">Traduction</a>
-        <br/>
-        <a href="/calculatrice">Calculatrice</a>
+        <div class="container">
+            <aside class="sidebar">
+                <h2>Menu</h2>
+                <ul>
+                    <li><a href="/calculatrice">Calculatrice</a></li>
+                    <li><a href="/traduction">Traduction</a></li>
+                    <li><a href="/kill_session">Quitter</a></li>
+                </ul>
+            </aside>
+
+            <main class="main-content">
+                <h1>Jeux de Jules</h1>
+
+            </main>
+        </div>
     </body>
 </html>
