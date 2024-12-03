@@ -2,10 +2,10 @@ from django.template.defaultfilters import lower
 from flask import Flask, session, render_template, request
 import random
 
-app = Flask(__name__)
-app.secret_key = 'session_jeux'
+main = Flask(__name__)
+main.secret_key = 'session_jeux'
 
-@app.route('/kill_session', methods=['GET', 'POST'])
+@main.route('/kill_session', methods=['GET', 'POST'])
 def kill_session():
     session.pop('session_jeux', None)  # Supprime la session de l'utilisateur
     return render_template('index.html')
@@ -24,7 +24,7 @@ def init_traduction():
                      'Jour', 'Nuit', 'Pluie', 'Neige', 'Vent', 'Ciel', 'Lumière', 'Sombre', 'Rivière', 'Plage',
                      'Pain', 'Lait', 'Thé', 'Sucre', 'Gâteau', 'Téléphone', 'Sac', 'Stylo', 'Porte', 'Fenêtre']
 
-@app.route('/traduction', methods=['GET', 'POST'])
+@main.route('/traduction', methods=['GET', 'POST'])
 def traduction():
     if 'nb_reponses' not in session:
         init_traduction()
@@ -70,7 +70,7 @@ def traduction():
                            reponse_html=reponse_py
                            )
 
-@app.route('/calculatrice', methods=['GET', 'POST'])
+@main.route('/calculatrice', methods=['GET', 'POST'])
 def calculatrice():
     message_py = ""
     erreur_py = ""
@@ -97,7 +97,7 @@ def calculatrice():
                            num2_html=num2_py
                            )
 
-@app.route('/', methods=['GET', 'POST'])
+@main.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html',
        message_html="",
@@ -108,4 +108,4 @@ def index():
        )
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    main.run(debug=True)
