@@ -1,4 +1,3 @@
-from django.template.defaultfilters import lower
 from flask import Flask, session, render_template, request
 import random
 
@@ -44,7 +43,7 @@ def traduction():
                 # Récupérer les valeurs des champs du formulaire
                 reponse_py = request.form['reponse']
                 reponse_attendue_py = request.form['reponse_attendue']
-                if lower(reponse_py)==lower(reponse_attendue_py):
+                if reponse_py.lower()==reponse_attendue_py.lower():
                     message_py = "Bravo !"
                     session['nb_bonnes_reponses'] = session['nb_bonnes_reponses'] + 1
                 else:
