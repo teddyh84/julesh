@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Traduction</title>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+         <div class="container">
+            <aside class="sidebar">
+                <h2>Menu</h2>
+                <ul>
+                    <li><a href="/calculatrice">Calculatrice</a></li>
+                    <li><a href="/traduction">Traduction</a></li>
+                    <li><a href="/kill_session">Quitter</a></li>
+                </ul>
+            </aside>
+
+            <main class="main-content">
+                <h1>Traduction</h1>
+                <p>Trouve le mot en français</p>
+                <form class="form" method="post">
+                    <b>Mot en anglais :</b>{{ question_html }}
+
+                    <input type="hidden" id="reponse_attendue" name="reponse_attendue" value="{{ reponse_attendue_html }}" required>
+                    <br><br>
+                    <b>Réponse en français :</b>
+                    <input type="text" id="reponse" name="reponse" value="{{ reponse_html }}" required placeholder="Entre le mot en français">
+                    <br><br>
+                    <button type="submit" id="repondre" name="repondre">Tester la réponse</button>
+                </form>
+
+                <div id="texte">
+                    <p style="color: green; font-weight: bold;">{{ message_html }}</p>
+                    <p style="color: red; font-weight: bold;">{{ score_html }}</p>
+                    <p style="color: red; font-weight: bold;">{{ erreur_html }}</p>
+                </div>
+            </main>
+        </div>
+
+    </body>
+</html>
