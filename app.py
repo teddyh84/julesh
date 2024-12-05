@@ -23,7 +23,13 @@ def calculatrice():
     try:
         calculatrice_include(app, session)
     except Exception as e:
-        return("Erreur dans /calculatrice : {e}")
+        return render_template('index.html',
+           message_html="{e}",
+           erreur_html={e},
+           result_html=e,
+           num1_html="",
+           num2_html=""
+           )
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
