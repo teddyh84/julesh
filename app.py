@@ -12,12 +12,12 @@ def kill_session():
     return render_template('index.html')
 
 @app.route('/traduction', methods=['GET', 'POST'])
-def route_traduction():
-    return traduction()
+def traduction():
+    return traduction_include()
 
 @app.route('/calculatrice', methods=['GET', 'POST'])
-def route_calculatrice():
-    return calculatrice()
+def calculatrice():
+    calculatrice_include()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

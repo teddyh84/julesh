@@ -1,6 +1,6 @@
 from flask import Flask, session, render_template, request
 
-def calculatrice():
+def calculatrice_include():
     message_py = ""
     erreur_py = ""
     num1_py = ""
