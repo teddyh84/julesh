@@ -16,16 +16,14 @@ def traduction():
     try:
         return traduction_include(app, session, request, random)
     except Exception as e:
-        print(f"Erreur dans /traduction : {e}")
-        return "Une erreur est survenue.", 500
+        return("Erreur dans /traduction : {e}")
 
 @app.route('/calculatrice', methods=['GET', 'POST'])
 def calculatrice():
     try:
         calculatrice_include(app, session)
     except Exception as e:
-        print(f"Erreur dans /traduction : {e}")
-        return "Une erreur est survenue.", 500
+        return("Erreur dans /calculatrice : {e}")
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
