@@ -13,11 +13,19 @@ def kill_session():
 
 @app.route('/traduction', methods=['GET', 'POST'])
 def traduction():
-    return traduction_include(app, session, request, random)
+    try:
+        return traduction_include(app, session, request, random)
+    except Exception as e:
+        print(f"Erreur dans /traduction : {e}")
+        return "Une erreur est survenue.", 500
 
 @app.route('/calculatrice', methods=['GET', 'POST'])
 def calculatrice():
-    calculatrice_include(app, session)
+    try:
+        calculatrice_include(app, session)
+    except Exception as e:
+        print(f"Erreur dans /traduction : {e}")
+        return "Une erreur est survenue.", 500
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
