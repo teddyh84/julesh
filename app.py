@@ -23,7 +23,7 @@ def calculatrice():
     try:
         calculatrice_include(app, session)
     except Exception as e:
-        return render_template('index.html',
+        return render_template('traduction.html',
            message_html="{e}",
            erreur_html={e},
            result_html=e,
