@@ -13,11 +13,11 @@ def kill_session():
 
 @app.route('/traduction', methods=['GET', 'POST'])
 def route_traduction():
-    return traduction(session, request, random)
+    return traduction()
 
 @app.route('/calculatrice', methods=['GET', 'POST'])
 def route_calculatrice():
-    return calculatrice(request)
+    return calculatrice()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

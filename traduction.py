@@ -1,6 +1,8 @@
-from flask import render_template
+from flask import Flask, session, render_template, request
+import random
 
-def init_traduction(session):
+
+def init_traduction():
     session['nb_bonnes_reponses'] = 0
     session['nb_reponses'] = 0
     session['mots_anglais'] = ['Apple', 'Ball', 'Cat', 'Dog', 'Fish', 'House', 'Tree', 'Book', 'Chair', 'Table',
@@ -14,7 +16,7 @@ def init_traduction(session):
                                 'Jour', 'Nuit', 'Pluie', 'Neige', 'Vent', 'Ciel', 'Lumière', 'Sombre', 'Rivière', 'Plage',
                                 'Pain', 'Lait', 'Thé', 'Sucre', 'Gâteau', 'Téléphone', 'Sac', 'Stylo', 'Porte', 'Fenêtre']
 
-def traduction(session, request, random):
+def traduction():
     if 'nb_reponses' not in session:
         init_traduction(session)
     message_py = ""
