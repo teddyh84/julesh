@@ -1,5 +1,6 @@
 from flask import Flask, session, render_template, request
 
+
 def main():
     message_py = ""
     erreur_py = ""

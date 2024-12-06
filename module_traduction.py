@@ -1,6 +1,7 @@
 from flask import Flask, session, render_template, request
 import random
 
+
 def init():
     session['nb_bonnes_reponses'] = 0
     session['nb_reponses'] = 0
