@@ -5,6 +5,7 @@ import module_calculatrice
 app = Flask(__name__)
 app.secret_key = 'session_jeux'
 
+
 @app.route('/traduction', methods=['GET', 'POST'])
 def traduction():
     return module_traduction.main()
