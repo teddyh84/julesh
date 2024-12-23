@@ -1,6 +1,13 @@
-from flask import Flask, session, render_template, request
+from flask import session, render_template, request
 import random
 
+
+def minuscule(texte):
+    result = texte
+    result = result.lower()
+    result = result.replace(" ", "")
+    print(f"Réponse utilisateur :{result}:")
+    return result
 
 def init():
     session['nb_bonnes_reponses'] = 0
@@ -17,7 +24,7 @@ def init():
                      'Pain', 'Lait', 'Thé', 'Sucre', 'Gâteau', 'Téléphone', 'Sac', 'Stylo', 'Porte', 'Fenêtre']
 
 def main():
-    if 'nb_reponses' not in session:
+    if request.method == 'GET':  # Réinitialisation sur actualisation
         init()
     message_py = ""
     erreur_py = ""
@@ -35,7 +42,7 @@ def main():
                 # Récupérer les valeurs des champs du formulaire
                 reponse_py = request.form['reponse']
                 reponse_attendue_py = request.form['reponse_attendue']
-                if reponse_py.lower()==reponse_attendue_py.lower():
+                if minuscule(reponse_py)==minuscule(reponse_attendue_py):
                     message_py = "Bravo !"
                     session['nb_bonnes_reponses'] = session['nb_bonnes_reponses'] + 1
                 else:
@@ -46,6 +53,11 @@ def main():
                 del session['traduction_fr'][mot_choisi]
                 reponse_attendue_py = mot_a_trouver
                 reponse_py = ""
+                if session ['nb_reponses'] == 50:
+                    if session ['nb_reponses'] == session ['nb_bonnes_reponses']:
+                        message_py = "Bravo !!! Tu as 50/50 👏👌 "
+                    else:
+                        message_py = "Bravo ! Et merci d'avoir participé ❤️"
 
                 print(f"Bonne réponse : {session['nb_bonnes_reponses']}, Total réponses : {session['nb_reponses']}")
                 print(f"Nb mots anglais : {len(session['mots_anglais'])}, Nb traduction : {len(session['traduction_fr'])}")

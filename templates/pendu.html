@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pendu</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+    <div class="container">
+            {% include 'menu.html' %}
+
+            <main class="main-content">
+                <h1>Pendu</h1>
+                <h4>Mot utilisateur {{ mot_utilisateur_html }}</h4>
+                <h5>Lettres déjà utilisées {{ lettres_deja_utilisees_html }}</h5>
+                <h5>Il te reste {{ compteur_html }} essais</h5>
+                 <form class="form" method="post">
+                        <legend>Entre une lettre :</legend>
+                        <input type="text" id="reponse_utilisateur" name="reponse_utilisateur" maxlength="1" placeholder="Entre une seule lettre">
+
+                     <div id="texte">
+                        <p style="color: green; font-weight: bold;">{{ message_ok_html }}</p>
+                        <p style="color: red; font-weight: bold;">{{ message_ko_html }}</p>
+                         <p style="color: orange; font-weight: bold;">{{ message_attention_html }}</p>
+                    </div>
+                     <br><br>
+                    <button type="submit" id="valider" name="valider">Valider</button>
+                     <button type="submit" id="rejouer" name="rejouer">Rejouer</button>
+                 </form>
+                <img src="{{ url_for('ressources', filename='pendu' + image_number_html + '.jpg') }}">
+
+            </main>
+        </div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>-
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -9,31 +9,28 @@
     </head>
     <body>
         <div class="container">
-            <aside class="sidebar">
-                <h2>Menu</h2>
-                <ul>
-                    <li><a href="/calculatrice">Calculatrice</a></li>
-                    <li><a href="/traduction">Traduction</a></li>
-                    <li><a href="/kill_session">Quitter</a></li>
-                </ul>
-            </aside>
+            {% include 'menu.html' %}
 
             <main class="main-content">
                 <h1>Calculatrice</h1>
                 <p>Fais une addition</p>
 
-                <form method="post">
+                <form class="form" method="post">
                     <b>Premier chiffre :</b>
                     <input type="text" id="num1" name="num1" value="{{ num1_html }}" required>
                     <br><br>
                     <u>Deuxième chiffre :</u>
                     <input type="text" id="num2" name="num2" value="{{ num2_html }}" required>
                     <br><br>
-                    <button type="submit" id="calculer" name="calculer">Calculer</button>
                     <button type="submit" id="effacer" name="effacer">Effacer</button>
+                    <button type="submit" id="calculer" name="calculer">Calculer</button>
+
                 </form>
                 <div id="texte">
-                    <p style="color: green; font-weight: bold;">{{ message_html }}{{ result_html }}</p>
+                    <p style="color: green; font-weight: bold;">{{ message_add_html }}{{ result_add_html }}</p>
+                    <p style="color: green; font-weight: bold;">{{ message_sous_html }}{{ result_sous_html }}</p>
+                    <p style="color: green; font-weight: bold;">{{ message_multi_html }}{{ result_multi_html }}</p>
+                    <p style="color: green; font-weight: bold;">{{ message_divi_html }}{{ result_divi_html }}</p>
                     <p style="color: red; font-weight: bold;">{{ erreur_html }}</p>
                 </div>
             </main>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Simon Says</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+     <style>
+        /* Style du carré */
+        .carre {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border: none;  /* Pas de bordure par défaut */
+            cursor: pointer; /* Le curseur devient une main pour signaler que c'est cliquable */
+            transition: background-color 1s ease;
+        }
+    </style>
+</head>
+<body>
+ <div class="container">
+            {% include 'menu.html' %}
+
+            <main class="main-content">
+                <h1>Simon Says</h1>
+                 <form method="POST">
+        <!-- Utilisation d'un bouton HTML pour créer le carré -->
+        <button class="carre" name="carre_rouge" style="background-color: {{ rouge_html }};"></button>
+        <button class="carre" name="carre_bleu" style="background-color: {{ bleu_html }};"></button>
+        <br><br>
+        <button class="carre" name="carre_jaune" style="background-color: {{ jaune_html }};"></button>
+        <button class="carre" name="carre_vert" style="background-color: {{ vert_html }};"></button>
+    </form>
+                <form class="form" method="post">
+                <button type="submit" id="lancer" name="lancer"> Lancer la partie</button>
+                </form>
+    </body>
+</html>
