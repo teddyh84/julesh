@@ -11,6 +11,29 @@ def init():
     session['jaune'] = "#FFFF00"
     session['couleur_py'] = ""
 
+def ajouter_couleur():
+    session['couleur_py'] = random.randint(1, 4)
+    if session['couleur_py'] == 1:
+        session['couleur_py'] = "r"
+        session['ordre_couleur_lock'].append(session['couleur_py'])
+        print(session['ordre_couleur_lock'])
+    if session['couleur_py'] == 2:
+        session['couleur_py'] = "b"
+        session['ordre_couleur_lock'].append(session['couleur_py'])
+        print(session['ordre_couleur_lock'])
+    if session['couleur_py'] == 3:
+        session['couleur_py'] = "v"
+        session['ordre_couleur_lock'].append(session['couleur_py'])
+        print(session['ordre_couleur_lock'])
+    if session['couleur_py'] == 4:
+        session['couleur_py'] = "j"
+        session['ordre_couleur_lock'].append(session['couleur_py'])
+        print(session['ordre_couleur_lock'])
+    session['ordre_couleur'] = session['ordre_couleur_lock']
+    print("Juste ordre couleur", session['ordre_couleur'])
+    print("Juste ordre couleur lock", session['ordre_couleur_lock'])
+
+
 def jouer():
     #Si toutes les couleurs sont > à compteur :
     if len(session['ordre_couleur']) > int(session['compteur']):
@@ -29,38 +52,22 @@ def jouer():
             session['vert'] = "#FFFFFF"
         #Ajouter 1 pour la couleur suivante
         session['compteur'] += 1
+
 def main():
     print("Hello !!!!")
     if request.method == 'GET':   #Réinitialisation sur actualisation
         init()
     if request.method == 'POST':
         if 'lancer' in request.form:
-            session['couleur_py'] = random.randint(1,4)
-            if session['couleur_py'] == 1:
-                session['couleur_py'] = "r"
-                session['ordre_couleur_lock'].append(session['couleur_py'])
-                print(session['ordre_couleur_lock'])
-            if session['couleur_py'] == 2:
-                session['couleur_py'] = "b"
-                session['ordre_couleur_lock'].append(session['couleur_py'])
-                print(session['ordre_couleur_lock'])
-            if session['couleur_py'] == 3:
-                session['couleur_py'] = "v"
-                session['ordre_couleur_lock'].append(session['couleur_py'])
-                print(session['ordre_couleur_lock'])
-            if session['couleur_py'] == 4:
-                session['couleur_py'] = "j"
-                session['ordre_couleur_lock'].append(session['couleur_py'])
-                print(session['ordre_couleur_lock'])
-            session['ordre_couleur'] = session['ordre_couleur_lock']
-            print("Juste ordre couleur" ,session['ordre_couleur'])
-            print("Juste ordre couleur lock", session['ordre_couleur_lock'])
-            jouer()
+            ajouter_couleur()
+            #while len(session['ordre_couleur_lock']) != 6:
+            #jouer()
 
     return render_template('simon_says.html',
                            couleur_html=session['couleur_py'],
                            rouge_html=session['rouge'],
                            bleu_html=session['bleu'],
                            vert_html=session['vert'],
-                           jaune_html=session['jaune']
+                           jaune_html=session['jaune'],
+                           ordre_couleur_lock_html=session['ordre_couleur_lock']
                            )
