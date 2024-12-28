@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculatrice</title>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        {% include 'couleurs.html' %}
+        <style>
+            /* Style du carré */
+            .carre {
+                width: 25px;
+                height: 40px;
+                margin: 10px;
+                border: none;  /* Pas de bordure par défaut */
+                cursor: pointer; /* Le curseur devient une main pour signaler que c'est cliquable */
+            }
+            .form button {
+                border-radius: 0px;
+            }
+        </style>
+</head>
+<body>
+    <div class="container">
+            {% include 'menu.html' %}
+
+            <main class="main-content">
+                <h1>Paramètres</h1>
+                <form class="form" method="post">
+                    <!-- Utilisation d'un bouton HTML pour créer le carré -->
+                    <button type="submit" class="carre" id="carre_rouge" name="carre_rouge" style="background-color: #ff0000;"></button>
+                    <button type="submit" class="carre" id="carre_bleu" name="carre_bleu" style="background-color: #0000ff;"></button>
+                    <button type="submit" class="carre" id="carre_jaune" name="carre_jaune" style="background-color: #ffff00;"></button>
+                    <button type="submit" class="carre" id="carre_vert" name="carre_vert" style="background-color: #00ff00;"></button>
+                    <button type="submit" class="carre" id="carre_orange" name="carre_orange" style="background-color: #ff9e00;"></button>
+                    <button type="submit" class="carre" id="carre_rose" name="carre_rose" style="background-color: #ff00ff;"></button>
+                    <button type="submit" class="carre" id="carre_violet" name="carre_violet" style="background-color: #4a00a3;"></button>
+                    <button type="submit" class="carre" id="carre_bleu_ciel" name="carre_bleu_ciel" style="background-color: #5bd9f5;"></button>
+                </form>
+            </main>
+    </div>
+</body>
+</html>

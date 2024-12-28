@@ -5,6 +5,7 @@ import module_pendu
 import module_avis
 import module_simon_says
 import module_pierre_feuille_ciseaux
+import module_parametre
 
 app = Flask(__name__)
 app.secret_key = 'session_jeux'
@@ -38,6 +39,10 @@ def pierre_feuille_ciseaux():
 def avis():
     return module_avis.main()
 
+@app.route('/parametres', methods=['GET', 'POST'])
+def parametres():
+    return module_parametre.main()
+
 #@app.route('/keypress', methods=['POST'])
 #def keypress():
 #    return module_pendu.keypress()
@@ -46,6 +51,8 @@ def avis():
 def kill_session():
     session.pop('session_jeux', None)  # Supprime la session de l'utilisateur
     return render_template('index.html')
+
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

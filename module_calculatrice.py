@@ -1,4 +1,4 @@
-from flask import Flask, session, render_template, request
+from flask import render_template, request
 
 def main():
     message_add_py = ""
