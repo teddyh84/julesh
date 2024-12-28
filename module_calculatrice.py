@@ -1,6 +1,5 @@
 from flask import Flask, session, render_template, request
 
-
 def main():
     message_add_py = ""
     message_sous_py = ""

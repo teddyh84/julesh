@@ -4,6 +4,7 @@ import module_calculatrice
 import module_pendu
 import module_avis
 import module_simon_says
+import module_pierre_feuille_ciseaux
 
 app = Flask(__name__)
 app.secret_key = 'session_jeux'
@@ -21,8 +22,6 @@ def traduction():
 def pendu():
     return module_pendu.main()
 
-
-
 @app.route('/calculatrice', methods=['GET', 'POST'])
 def calculatrice():
     return module_calculatrice.main()
@@ -31,12 +30,19 @@ def calculatrice():
 def simon_says():
     return module_simon_says.main()
 
+@app.route('/pierre_feuille_ciseaux', methods=['GET', 'POST'])
+def pierre_feuille_ciseaux():
+    return module_pierre_feuille_ciseaux.main()
+
 @app.route('/avis', methods=['GET', 'POST'])
 def avis():
     return module_avis.main()
 
+#@app.route('/keypress', methods=['POST'])
+#def keypress():
+#    return module_pendu.keypress()
 
-@app.route('/kill_session', methods=['GET', 'POST'])
+@app.route('/accueil', methods=['GET', 'POST'])
 def kill_session():
     session.pop('session_jeux', None)  # Supprime la session de l'utilisateur
     return render_template('index.html')

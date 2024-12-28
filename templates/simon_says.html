@@ -21,7 +21,9 @@
             {% include 'menu.html' %}
             <main class="main-content">
                 <h1>Simon Says</h1>
-                <h5>{{ordre_couleur_lock_html}}</h5>
+                <h5>{{ordre_couleur_html}}</h5>
+                <h5>{{ordre_couleur_utilisateur_html}}</h5>
+
                 <form class="form" method="post">
                     <!-- Utilisation d'un bouton HTML pour créer le carré -->
                     <button type="submit" class="carre" id="carre_rouge" name="carre_rouge" style="background-color: {{ rouge_html }};"></button>
@@ -31,6 +33,10 @@
                     <button type="submit" class="carre" id="carre_vert" name="carre_vert" style="background-color: {{ vert_html }};"></button>
                     <br><br>
                     <button type="submit" id="lancer" name="lancer"> Lancer la partie</button>
+                    <div id="texte">
+                        <p style="color: green; font-weight: bold;">{{ message_ok_html }}</p>
+                        <p style="color: red; font-weight: bold;">{{ message_ko_html }}</p>
+                    </div>
                 </form>
             </main>
         </div>
