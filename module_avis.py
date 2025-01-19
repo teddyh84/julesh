@@ -14,9 +14,9 @@ def init():
         with open("ressources/avis_utilisateurs.txt", 'r') as fichier:  # Ouvre le fichier en mode lecture
             session['avis_tous_utilisateurs'] = fichier.read()  # Lit tout le contenu du fichier
     except FileNotFoundError:
-        return f"Erreur : Le fichier est introuvable."
+        print("Erreur : Le fichier est introuvable.")
     except Exception as e:
-        return f"Erreur lors de la lecture du fichier : {e}"
+        print("Erreur lors de la lecture du fichier : {e}")
 
 
 
