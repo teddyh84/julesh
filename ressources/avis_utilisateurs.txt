@@ -1,0 +1,5 @@
+alice;simon says;je voudrais que on puisse jouer avec les flèches
+Charlotte;Simon says;trop cool ! ca sera encore mieux avec les couleurs en visuel des consignes
+alice;pendu;j'aimerais que les mots soient plus difficiles ( plus de lettres )
+alice;paramètre;+ 1 couleur : turquoise
+cha;avis;les boutons ne sont pas clairs

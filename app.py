@@ -22,7 +22,6 @@ def ressources(filename):
 def traduction():
     return module_traduction.main()
 
-
 @app.route('/pendu', methods=['GET', 'POST'])
 def pendu():
     return module_pendu.main()
