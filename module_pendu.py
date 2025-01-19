@@ -16,6 +16,7 @@ def init():
     session['message_ok_py'] = ""
     session['message_attention_py'] = ""
     print(session['mot_mystere_py'])
+
 def main():
     reponse_utilisateur_py = ""
     if request.method == 'GET':  # Réinitialisation sur actualisation
@@ -52,14 +53,18 @@ def main():
                 # Ajouter 1 aux lettres loupées
                 nb_lettre_loupees -= 1
                 session['nombre_lettres_loupées'] = str(nb_lettre_loupees)
-    if 'rejouer' in request.form:
-        init()
-        print("hello je rejoue !")
-    if int(session['nombre_lettres_loupées']) <= 0:
-        session['message_ko_py'] = "Tu as perdu !! 😫😭😱"
-    if session['mot_mystere_py'] == session['mot_utilisateur_py']:
-        if int(session['nombre_lettres_loupées']) > 0:
-            session['message_ok_py'] = "Tu es trop fort(e) !! 👌👏😍"
+
+        if 'rejouer' in request.form:
+            init()
+            print("hello je rejoue !")
+
+        if int(session['nombre_lettres_loupées']) <= 0:
+            session['message_ko_py'] = "Tu as perdu !! 😫😭😱"
+
+        if session['mot_mystere_py'] == session['mot_utilisateur_py']:
+            if int(session['nombre_lettres_loupées']) > 0:
+                session['message_ok_py'] = "Tu es trop fort(e) !! 👌👏😍"
+
     return render_template('pendu.html',
                         mot_mystere_html=session['mot_mystere_py'],
                         mot_utilisateur_html=session['mot_utilisateur_py'],
