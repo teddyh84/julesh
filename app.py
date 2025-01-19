@@ -6,6 +6,10 @@ import module_avis
 import module_simon_says
 import module_pierre_feuille_ciseaux
 import module_parametre
+import module_accueil
+import module_jeu_rpg
+import module_jeu_animaux
+import module_jeu_drapeau
 
 app = Flask(__name__)
 app.secret_key = 'session_jeux'
@@ -35,6 +39,18 @@ def simon_says():
 def pierre_feuille_ciseaux():
     return module_pierre_feuille_ciseaux.main()
 
+@app.route('/jeu_rpg', methods=['GET', 'POST'])
+def jeu_rpg():
+    return module_jeu_rpg.main()
+
+@app.route('/jeu_animaux', methods=['GET', 'POST'])
+def jeu_animaux():
+    return module_jeu_animaux.main()
+
+@app.route('/jeu_drapeau', methods=['GET', 'POST'])
+def jeu_drapeau():
+    return module_jeu_drapeau.main()
+
 @app.route('/avis', methods=['GET', 'POST'])
 def avis():
     return module_avis.main()
@@ -43,9 +59,13 @@ def avis():
 def parametres():
     return module_parametre.main()
 
-#@app.route('/keypress', methods=['POST'])
-#def keypress():
-#    return module_pendu.keypress()
+@app.route('/accueil', methods=['GET', 'POST'])
+def accueil():
+    return module_accueil.main()
+
+# @app.route('/keypress', methods=['POST'])
+# def keypress():
+#     return module_simon_says.keypress()
 
 @app.route('/accueil', methods=['GET', 'POST'])
 def kill_session():

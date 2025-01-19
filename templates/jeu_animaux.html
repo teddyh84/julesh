@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Jeu animaux</title>
+
+            <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+            {% include 'couleurs.html' %}
+            <style>
+                .container {
+                    display: flex;
+                    width: 90%;
+                    max-width: 1200px;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                    border-radius: 12px;
+                    overflow: hidden;
+                    background: #fff;
+                    background-image: url('ressources/image_plage_fond_d_ecran.png');
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+                .form {
+                    margin: 0; /* Supprime les marges externes */
+                    display: flex;
+                    justify-content: center; /* Centre le bouton horizontalement */
+                    background: none; /* Enlève tout arrière-plan éventuel */
+                    box-shadow: none;
+                }
+            </style>
+</head>
+<body>
+    <div class="container">
+        {% include 'menu.html' %}
+
+        <main class="main-content">
+            <form class="form" method="post">
+              <button type="submit" id="maison" name="maison" style="font-size: 50px; background: none;">🏠</button>
+                </form>
+            <h1>Jeu animaux</h1>
+                <form class="form" method="post">
+                    {% if afficher_visuel_bouton %}
+                    <button type="submit" id="lancer_partie" name="lancer_partie">{{afficher_bouton}}</button>
+                    {% endif %}
+                    <img src={{lien_image}}>
+                    <br><br>
+                    {% if afficher_visuel_bouton_nourrir %}
+                    <button type="submit" id="nourrir" name="nourrir">Nourrir 🥩</button>
+                    {% endif %}
+                    {% if afficher_visuel_bouton_caresser %}
+                    <button type="submit" id="caresser" name="caresser">Caresser</button>
+                    {% endif %}
+                </form>
+        </main>
+    </div>
+</body>
+</html>

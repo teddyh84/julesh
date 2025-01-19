@@ -16,6 +16,27 @@ def init():
     session['message_ordre_couleur_py'] = ""
     session['message_ordre_couleur_utilisateur_py'] = ""
 
+    ajouter_couleur()
+
+# def keypress():
+#     key = request.json.get("key")
+#     print(key)
+#
+#     match key:
+#         case "ArrowUp":
+#             controle_couleur("r")
+#         case "ArrowLeft":
+#             controle_couleur("b")
+#         case "ArrowRight":
+#             controle_couleur("j")
+#         case "ArrowDown":
+#             controle_couleur("v")
+#         case _:
+#             print(f"erreur")
+#     return {"message": f"Key '{key}' received successfully!"}, 200
+
+
+
 def controle_couleur(couleur_bouton):
     print(session['ordre_couleur'][int(session['compteur'])])
     print(couleur_bouton)
@@ -38,7 +59,7 @@ def controle_couleur(couleur_bouton):
             session['ordre_couleur_utilisateur'].clear()
     # si c'est le mauvais bouton
     else:
-        session['message_ko_py'] = "Perdu !!"
+        session['message_ko_py'] = "Perdu avec " + str(len(session['ordre_couleur'])) + " coups !"
         session['message_ordre_couleur_py'] = session['ordre_couleur']
 
 def ajouter_couleur():
@@ -89,7 +110,6 @@ def main():
     if request.method == 'POST':
         if 'lancer' in request.form:
             init()
-            ajouter_couleur()
             #while len(session['ordre_couleur_utilisateur']) != 6:
             #jouer()
         if 'carre_rouge' in request.form:
@@ -102,13 +122,14 @@ def main():
             controle_couleur("v")
 
     return render_template('simon_says.html',
-                           couleur_html=session['couleur_py'],
-                           rouge_html=session['rouge'],
-                           bleu_html=session['bleu'],
-                           vert_html=session['vert'],
-                           jaune_html=session['jaune'],
-                           ordre_couleur_utilisateur_html=session['message_ordre_couleur_utilisateur_py'],
-                           ordre_couleur_html=session['message_ordre_couleur_py'],
-                           message_ok_html=session['message_ok_py'],
-                           message_ko_html=session['message_ko_py']
+                            couleur_html=session['couleur_py'],
+                            rouge_html=session['rouge'],
+                            bleu_html=session['bleu'],
+                            vert_html=session['vert'],
+                            jaune_html=session['jaune'],
+                            ordre_couleur_utilisateur_html=session['message_ordre_couleur_utilisateur_py'],
+                            ordre_couleur_html=session['message_ordre_couleur_py'],
+                            message_ok_html=session['message_ok_py'],
+                            message_ko_html=session['message_ko_py'],
+                            couleur_bouton=session['couleur_bouton']
                            )

@@ -11,7 +11,7 @@ def main():
 
     print("HOLLA")
     if request.method == 'POST':
-        if 'soumettre' in request.form:
+        if 'bouton' in request.form:
             session['nom_utilisateur_py'] = request.form['nom']
             print("L'utilisateur s'appelle :", session['nom_utilisateur_py'])
             session['jeu_joue_py'] = request.form['jeu_joue']
@@ -20,8 +20,7 @@ def main():
             print("L'utilisateur c'est dit :", session['avis_py'])
             session['remerciment'] = "Merci d'avoir répondu 👍😘️"
             pour_fichier()
-            if 'renvoyer' in request.form:
-                session['remerciment'] = ""
     return render_template('avis.html',
-                           remerciment=session['remerciment']
+                            remerciment=session['remerciment'],
+                            couleur_bouton=session['couleur_bouton'],
                            )

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Devine le drapeau</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        {% include 'couleurs.html' %}
+    </head>
+<body>
+    <div class="container">
+            {% include 'menu.html' %}
+            <main class="main-content">
+                <h1>Devine le drapeau</h1>
+                <h5>{{coucou}}</h5>
+        </main>
+</div>
+</body>
+</html>

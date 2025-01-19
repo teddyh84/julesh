@@ -1,7 +1,8 @@
 from flask import session, render_template, request
 
 def init():
-    session['couleur_bouton'] = ""
+    if 'couleur_bouton' not in session:
+        session['couleur_bouton'] = ""
 
 def main():
     if request.method == 'GET':  # Réinitialisation sur actualisation

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,25 +15,97 @@
                 border: none;  /* Pas de bordure par défaut */
                 cursor: pointer; /* Le curseur devient une main pour signaler que c'est cliquable */
             }
+            .container_square {
+                display: flex; /* Utilisation de Flexbox */
+                flex-wrap: wrap; /* Les carrés passent à la ligne si nécessaire */
+                gap: 10px; /* Espacement entre les carrés */
+            }
+            .square {
+                width: 25px;
+                height: 25px;
+                display: inline-block;
+                margin: 5px;
+            }
         </style>
+        <script>
+            document.addEventListener('keydown', (event) => {
+                const key = event.key;
+
+                switch (key) {
+                  case 'ArrowUp':
+                    document.getElementById('carre_rouge').click();
+                    break;
+                  case 'ArrowLeft':
+                    document.getElementById('carre_bleu').click();
+                    break;
+                  case 'ArrowRight':
+                    document.getElementById('carre_jaune').click();
+                    break;
+                  case 'ArrowDown':
+                    document.getElementById('carre_vert').click();
+                    break;
+                  default:
+                    // alert('Il faut utiliser les flèches');
+                    break;
+                }
+
+                /*
+                resultat = fetch('/keypress', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ key: key })
+                })
+                .then(response => response.json());
+                console.log(resultat);
+                */
+            });
+        </script>
     </head>
     <body>
         <div class="container">
             {% include 'menu.html' %}
             <main class="main-content">
                 <h1>Simon Says</h1>
-                <h5>{{ordre_couleur_html}}</h5>
-                <h5>{{ordre_couleur_utilisateur_html}}</h5>
 
-                <form class="form" method="post">
+                <div class="container_square">
+                    {% for color in ordre_couleur_html %}
+                        <div
+                            class="square"
+                            style="background-color:
+                                {% if color == 'b' %}{{ bleu_html }}
+                                {% elif color == 'j' %}{{ jaune_html }}
+                                {% elif color == 'r' %}{{ rouge_html }}
+                                {% elif color == 'v' %}{{ vert_html }}
+                                {% endif %};">
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="container_square">
+                    {% for color in ordre_couleur_utilisateur_html %}
+                        <div
+                            class="square"
+                            style="background-color:
+                                {% if color == 'b' %}{{ bleu_html }}
+                                {% elif color == 'j' %}{{ jaune_html }}
+                                {% elif color == 'r' %}{{ rouge_html }}
+                                {% elif color == 'v' %}{{ vert_html }}
+                                {% endif %};">
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <form class="form" method="post" style="text-align:center">
                     <!-- Utilisation d'un bouton HTML pour créer le carré -->
                     <button type="submit" class="carre" id="carre_rouge" name="carre_rouge" style="background-color: {{ rouge_html }};"></button>
-                    <button type="submit" class="carre" id="carre_bleu" name="carre_bleu" style="background-color: {{ bleu_html }};"></button>
                     <br><br>
+                    <button type="submit" class="carre" id="carre_bleu" name="carre_bleu" style="background-color: {{ bleu_html }};"></button>
+                    <span class="carre" style="padding-left:100px;">&nbsp;</span>
                     <button type="submit" class="carre" id="carre_jaune" name="carre_jaune" style="background-color: {{ jaune_html }};"></button>
+                    <br><br>
                     <button type="submit" class="carre" id="carre_vert" name="carre_vert" style="background-color: {{ vert_html }};"></button>
                     <br><br>
-                    <button type="submit" id="lancer" name="lancer"> Lancer la partie</button>
+                    <button type="submit" id="lancer" name="lancer">Rejouer</button>
                     <div id="texte">
                         <p style="color: green; font-weight: bold;">{{ message_ok_html }}</p>
                         <p style="color: red; font-weight: bold;">{{ message_ko_html }}</p>

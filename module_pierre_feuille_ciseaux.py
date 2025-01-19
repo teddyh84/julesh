@@ -44,7 +44,8 @@ def main():
             rejouer()
 
     return render_template('pierre_feuille_ciseaux.html',
-                       choix_machine=session['choix_machine'],
-                       choix_utilisateur=session['choix_utilisateur'],
-                       reponse=session['reponse']
+                        choix_machine=session['choix_machine'],
+                        choix_utilisateur=session['choix_utilisateur'],
+                        reponse=session['reponse'],
+                        couleur_bouton=session['couleur_bouton']
                        )

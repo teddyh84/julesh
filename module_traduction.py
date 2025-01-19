@@ -65,11 +65,12 @@ def main():
             except:
                 erreur_py = "Erreur : veuillez entrer une réponse valide."
     return render_template('traduction.html',
-                           message_html=message_py,
-                           erreur_html=erreur_py,
-                           score_html=score_py,
-                           question_html=question_py,
-                           reponse_attendue_html=reponse_attendue_py,
-                           reponse_html=reponse_py
+                            message_html=message_py,
+                            erreur_html=erreur_py,
+                            score_html=score_py,
+                            question_html=question_py,
+                            reponse_attendue_html=reponse_attendue_py,
+                            reponse_html=reponse_py,
+                            couleur_bouton=session['couleur_bouton']
                            )
 

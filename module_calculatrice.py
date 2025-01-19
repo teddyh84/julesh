@@ -1,4 +1,4 @@
-from flask import render_template, request
+from flask import render_template, request, session
 
 def main():
     message_add_py = ""
@@ -44,6 +44,7 @@ def main():
                            message_add_html=message_add_py,
                            message_sous_html=message_sous_py,
                             message_multi_html = message_multi_py,
-                           message_divi_html=message_divi_py
+                           message_divi_html=message_divi_py,
+                            couleur_bouton=session['couleur_bouton']
 
                            )
