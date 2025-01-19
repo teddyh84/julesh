@@ -12,6 +12,7 @@ def init():
     with open("ressources/avis_utilisateurs.txt" , 'r') as fichier:  # Ouvre le fichier en mode lecture
         session['avis_tous_utilisateurs'] = fichier.read()  # Lit tout le contenu du fichier
 
+
 def main():
     if request.method == 'GET': #Réinitialisation sur actualisation
         init()
