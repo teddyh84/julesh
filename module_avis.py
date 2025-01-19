@@ -30,6 +30,6 @@ def main():
             pour_fichier()
     return render_template('avis.html',
                             remerciment=session['remerciment'],
-                            avis_tous_utilisateurs=session['avis_tous_utilisateur'],
+                            avis_tous_utilisateurs=session['avis_tous_utilisateurs'],
                             couleur_bouton=session['couleur_bouton'],
                            )
