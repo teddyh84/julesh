@@ -1,13 +1,20 @@
 from flask import render_template, request, session
+
 def pour_fichier():
     with open("ressources/avis_utilisateurs.txt", "a") as fichier:
         fichier.write(session['nom_utilisateur_py'] + ";" + session['jeu_joue_py'] + ";" + session['avis_py'] + "\n")
 
-def main():
+def init():
     session['nom_utilisateur_py'] = ""
     session['jeu_joue_py'] = ""
     session['avis_py'] = ""
     session['remerciment'] = ""
+    with open("ressources/avis_utilisateurs.txt" , 'r') as fichier:  # Ouvre le fichier en mode lecture
+        session['avis_tous_utilisateurs'] = fichier.read()  # Lit tout le contenu du fichier
+
+def main():
+    if request.method == 'GET': #Réinitialisation sur actualisation
+        init()
 
     print("HOLLA")
     if request.method == 'POST':
@@ -22,5 +29,6 @@ def main():
             pour_fichier()
     return render_template('avis.html',
                             remerciment=session['remerciment'],
+                            avis_tous_utilisateurs=session['avis_tous_utilisateur'],
                             couleur_bouton=session['couleur_bouton'],
                            )
