@@ -13,6 +13,7 @@ def init():
     try:
         with open("ressources/avis_utilisateurs.txt", 'r') as fichier:  # Ouvre le fichier en mode lecture
             session['avis_tous_utilisateurs'] = fichier.read()  # Lit tout le contenu du fichier
+            fichier.close()
     except FileNotFoundError:
         print("Erreur : Le fichier est introuvable.")
     except Exception as e:
