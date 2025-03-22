@@ -39,11 +39,16 @@
               <button type="submit" id="maison" name="maison" style="font-size: 50px; background: none;">🏠</button>
                 </form>
             <h1>Jeu animaux</h1>
+            {% if afficher_amour_nourriture %}
+            <h3>❤️ Amour : {{amour}}</h3>
+            <h3>🤤 faim : {{faim}}</h3>
+            {% endif %}
                 <form class="form" method="post">
-                    {% if afficher_visuel_bouton %}
-                    <button type="submit" id="lancer_partie" name="lancer_partie">{{afficher_bouton}}</button>
+                    {% if afficher_visuel_bouton_lancer %}
+                    <button type="submit" id="lancer_partie" name="lancer_partie">Lancer la partie</button>
                     {% endif %}
                     <img src={{lien_image}}>
+                    <br><br>
                     <br><br>
                     {% if afficher_visuel_bouton_nourrir %}
                     <button type="submit" id="nourrir" name="nourrir">Nourrir 🥩</button>
@@ -52,6 +57,9 @@
                     <button type="submit" id="caresser" name="caresser">Caresser</button>
                     {% endif %}
                 </form>
+            {% if afficher_amour_nourriture %}
+            <h3>🥩 Nourriture : {{nombre_nourriture}}</h3>
+            {% endif %}
         </main>
     </div>
 </body>

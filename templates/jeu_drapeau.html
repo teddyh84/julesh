@@ -12,7 +12,20 @@
             {% include 'menu.html' %}
             <main class="main-content">
                 <h1>Devine le drapeau</h1>
-                <h5>{{coucou}}</h5>
+                <h5>{{nombre_aleatoire}}</h5>
+                <h1>{{vrai_choix}}</h1>
+                <form class="form" method="post">
+                    <img src="{{ url_for('ressources', filename='drapeau_' + image_drapeau + '.jpg') }}">
+                    <br><br>
+                    <button type="submit" id="proposition_1" name="proposition_1">{{proposition_1}}</button>
+                    <button type="submit" id="proposition_2" name="proposition_2">{{proposition_2}}</button>
+                    <button type="submit" id="proposition_3" name="proposition_3">{{proposition_3}}</button>
+                    <br><br>
+                    {% if afficher_nouveau_drapeau %}
+                    <button type="submit" id="generer" name="generer">Génerer un nouveau drapeau</button>
+                    {% endif %}
+                </form>
+                <h5>{{message}}</h5>
         </main>
 </div>
 </body>

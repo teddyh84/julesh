@@ -1,4 +1,6 @@
 from flask import render_template, request, session
+import requests
+
 
 def pour_fichier():
     with open("ressources/avis_utilisateurs.txt", "a") as fichier:
@@ -10,15 +12,22 @@ def init():
     session['avis_py'] = ""
     session['remerciment'] = ""
     session['avis_tous_utilisateurs'] = ""
-    try:
-        with open("ressources/avis_utilisateurs.txt", 'r') as fichier:  # Ouvre le fichier en mode lecture
-            session['avis_tous_utilisateurs'] = fichier.read()  # Lit tout le contenu du fichier
-            fichier.close()
-    except FileNotFoundError:
-        print("Erreur : Le fichier est introuvable.")
-    except Exception as e:
-        print("Erreur lors de la lecture du fichier : {e}")
+    # try:
+    #     with open("ressources/avis_utilisateurs.txt", 'r') as fichier:  # Ouvre le fichier en mode lecture
+    #         session['avis_tous_utilisateurs'] = fichier.read()  # Lit tout le contenu du fichier
+    #         fichier.close()
+    # except FileNotFoundError:
+    #     print("Erreur : Le fichier est introuvable.")
+    # except Exception as e:
+    #     print("Erreur lors de la lecture du fichier : {e}")
 
+
+    url = "https://raw.githubusercontent.com/teddyh84/julesh/master/ressources/avis_utilisateurs.txt"
+    response = requests.get(url)
+    if response.status_code == 200:
+        print(response.text)
+    else:
+        print("Erreur lors de la récupération du fichier:", response.status_code)
 
 
 def main():
