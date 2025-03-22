@@ -2,7 +2,7 @@ from flask import session, render_template, request
 
 def init():
     if 'couleur_bouton' not in session:
-        session['couleur_bouton'] = ""
+        session['couleur_bouton'] = "#4a00a3"
 
 def main():
     if request.method == 'GET':  # Réinitialisation sur actualisation
