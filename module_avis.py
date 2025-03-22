@@ -1,5 +1,5 @@
 from flask import render_template, request, session
-import requests
+#import requests
 
 
 def pour_fichier():
@@ -22,12 +22,12 @@ def init():
     #     print("Erreur lors de la lecture du fichier : {e}")
 
 
-    url = "https://raw.githubusercontent.com/teddyh84/julesh/master/ressources/avis_utilisateurs.txt"
-    response = requests.get(url)
-    if response.status_code == 200:
-        print(response.text)
-    else:
-        print("Erreur lors de la récupération du fichier:", response.status_code)
+    #url = "https://raw.githubusercontent.com/teddyh84/julesh/master/ressources/avis_utilisateurs.txt"
+    #response = requests.get(url)
+    #if response.status_code == 200:
+    #    print(response.text)
+    #else:
+    #    print("Erreur lors de la récupération du fichier:", response.status_code)
 
 
 def main():
