@@ -12,3 +12,16 @@
         background-color: #a6a6a6;
     }
 </style>
+
+
+<script>
+    function menu_click() {
+        const sidebar = document.querySelector(".sidebar_detail");
+        const isActive = sidebar.style.display;
+        if (isActive == "none") {
+            sidebar.style.display = "block"; // Empêche le scroll quand le menu est ouvert
+        } else {
+            sidebar.style.display = "none"; // Rétablit le scroll
+        }
+    }
+</script>

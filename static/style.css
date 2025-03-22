@@ -65,19 +65,17 @@ body {
     background-color: #45a049;
 }
 
+.sidebar_detail {
+    display: none;
+}
+
 /* Bouton pour ouvrir/fermer le menu */
 .menu-toggle {
-    display: none;
-    background-color: #4caf50;
-    color: white;
+    background-color: transparent;
     border: none;
-    padding: 10px 15px;
+    color: #6e6e6e;
     font-size: 20px;
     cursor: pointer;
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    border-radius: 6px;
 }
 /* Responsive : cacher le menu sur mobile */
 @media screen and (max-width: 768px) {
@@ -87,9 +85,6 @@ body {
     }
     .sidebar.active {
         transform: translateX(0);
-    }
-    .menu-toggle {
-        display: block;
     }
 }
 

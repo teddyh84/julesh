@@ -7,16 +7,6 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
         {% include 'couleurs.html' %}
     </head>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const menuToggle = document.querySelector(".menu-toggle");
-            const sidebar = document.querySelector(".sidebar");
-
-            menuToggle.addEventListener("click", function() {
-                sidebar.classList.toggle("active");
-            });
-        });
-    </script>
     <body>
         <div class="container">
             {% include 'menu.html' %}
