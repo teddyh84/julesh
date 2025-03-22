@@ -27,7 +27,15 @@ body {
     color: white;
     padding: 20px;
     width: 30%;
+    min-width: 250px;
     text-align: center;
+    /*
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    transition: transform 0.3s ease-in-out;
+    */
 }
 
 .sidebar h2 {
@@ -56,6 +64,35 @@ body {
 .sidebar ul li a:hover {
     background-color: #45a049;
 }
+
+/* Bouton pour ouvrir/fermer le menu */
+.menu-toggle {
+    display: none;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    border-radius: 6px;
+}
+/* Responsive : cacher le menu sur mobile */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: 250px;
+    }
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    .menu-toggle {
+        display: block;
+    }
+}
+
 
 /* Main content */
 .main-content {
