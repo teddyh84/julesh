@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Commandes 3D</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        {% include 'couleurs.html' %}
+        <style>
+            * {box-sizing:border-box}
+
+            /* Slideshow container */
+            .slideshow-container {
+              max-width: 1000px;
+              position: relative;
+              margin: auto;
+            }
+
+            /* Hide the images by default */
+            .mySlides {
+              display: none;
+            }
+
+            /* Next & previous buttons */
+            .prev, .next {
+              cursor: pointer;
+              position: absolute;
+              top: 50%;
+              width: auto;
+              margin-top: -22px;
+              padding: 16px;
+              color: white;
+              font-weight: bold;
+              font-size: 18px;
+              transition: 0.6s ease;
+              border-radius: 0 3px 3px 0;
+              user-select: none;
+            }
+
+            /* Position the "next button" to the right */
+            .next {
+              right: 0;
+              border-radius: 3px 0 0 3px;
+            }
+
+            /* On hover, add a black background color with a little bit see-through */
+            .prev:hover, .next:hover {
+              background-color: rgba(0,0,0,0.8);
+            }
+
+            /* Caption text */
+            .text {
+              color: #f2f2f2;
+              font-size: 15px;
+              padding: 8px 12px;
+              position: absolute;
+              bottom: 8px;
+              width: 100%;
+              text-align: center;
+            }
+
+            /* Number text (1/3 etc) */
+            .numbertext {
+              color: #f2f2f2;
+              font-size: 12px;
+              padding: 8px 12px;
+              position: absolute;
+              top: 0;
+            }
+
+            /* The dots/bullets/indicators */
+            .dot {
+              cursor: pointer;
+              height: 15px;
+              width: 15px;
+              margin: 0 2px;
+              background-color: #bbb;
+              border-radius: 50%;
+              display: inline-block;
+              transition: background-color 0.6s ease;
+            }
+
+            .active, .dot:hover {
+              background-color: #717171;
+            }
+
+            /* Fading animation */
+            .fade {
+              animation-name: fade;
+              animation-duration: 1.5s;
+            }
+
+            @keyframes fade {
+              from {opacity: .4}
+              to {opacity: 1}
+            }
+        </style>
+</head>
+<body>
+    <div class="container">
+        {% include 'menu.html' %}
+        <main class="main-content">
+        <h1>Formulaire de Commande</h1>
+        <h5>{{coucou}}</h5>
+                <form class="form" method="post" style="overflow-y: auto;">
+                    <div class="div_vertical_align">
+                        <input type="radio" name="modele" id="chat" value="Chat" style="max-width:10px;">
+                        <span style="font-weight: bold;">Statue chat effet ligne</span>
+                        <img src="ressources/image_impressions_3d/chat_1.jpg" width="115">
+                        <img src="ressources/image_impressions_3d/chat_2.jpg" width="115">
+                        <img src="ressources/image_impressions_3d/chat_3.jpg" width="115">
+                    </div>
+                    <hr/>
+                    <div class="div_vertical_align">
+                        <input type="radio" name="modele" id="chien" value="Chien" style="max-width:10px;">
+                        <span style="font-weight: bold;">Statue chien</span>
+                        <img src="ressources/image_impressions_3d/chien_1.jpg" width="115">
+                        <img src="ressources/image_impressions_3d/chien_2.jpg" width="115">
+                    </div>
+                    <hr/>
+                    <div class="div_vertical_align">
+                        <input type="radio" name="modele" id="couteau" value="Couteau" style="max-width:10px;">
+                        <span style="font-weight: bold;">Faux couteau</span>
+                        <img src="ressources/image_impressions_3d/couteau_1.jpg" width="115">
+                        <img src="ressources/image_impressions_3d/couteau_2.jpg" width="115">
+                    </div>
+                    <hr/>
+                    <div class="div_vertical_align">
+                        <input type="radio" name="modele" id="mouton" value="Mouton" style="max-width:10px;">
+                        <span style="font-weight: bold;">Déco mouton</span>
+                        <img src="ressources/image_impressions_3d/mouton.jpg" width="115">
+                    </div>
+                    <hr/>
+                    <div class="div_vertical_align">
+                        <input type="radio" name="modele" id="hand_spiner" value="Hand Spiner" style="max-width:10px;">
+                        <span style="font-weight: bold;">Faux Hand Spiner fonctionel</span>
+                        <img src="ressources/image_impressions_3d/hand_spiner.jpg" width="115">
+                    </div>
+                    <hr/>
+                    <div class="div_vertical_align">
+                        <input type="radio" name="modele" id="porte_clee_hexagone_flexible" value="Porte clée hexagone flexible" style="max-width:10px;">
+                        <span style="font-weight: bold;">Porte clée hexagone flexible</span>
+                        <img src="ressources/image_impressions_3d/porte_clee_hexagone_flexible.jpg" width="115">
+                    </div>
+                    <hr/>
+                    <div class="div_vertical_align">
+                        <input type="radio" name="modele" id="porte_tel" value="Porte téléphone" style="max-width:10px;">
+                        <span style="font-weight: bold;">Porte téléphone</span>
+                        <img src="ressources/image_impressions_3d/porte_tel_1.jpg" width="97">
+                        <img src="ressources/image_impressions_3d/porte_tel_2.jpg" width="97">
+                        <img src="ressources/image_impressions_3d/porte_tel_3.jpg" width="97">
+                        <img src="ressources/image_impressions_3d/porte_tel_4.jpg" width="97">
+                        <img src="ressources/image_impressions_3d/porte_tel_5.jpg" width="97">
+                    </div>
+                    <hr/>
+
+                    <h3>Couleur primaire :</h3>
+                    <select id="couleur_primaire" name="couleur_primaire">
+                      <option value="choisir_couleur">- Choisissez une couleur -</option>
+                      <option value="Noir">Noir</option>
+                      <option value="Jaune">Jaune</option>
+                      <option value="Vert">Vert</option>
+                      <option value="Bleu marine">Bleu marine</option>
+                      <option value="Violet">Violet</option>
+                      <option value="Rouge">Rouge</option>
+                      <option value="Orange">Orange</option>
+                      <option value="Blanc">Blanc</option>
+                    </select>
+
+
+                    <br/><br/>
+                    <h3>Couleur secondaire :</h3>
+                    <select id="couleur_secondaire" name="couleur_secondaire">
+                      <option value="choisir_couleur">- Choisissez une couleur -</option>
+                      <option value="Noir">Noir</option>
+                      <option value="Jaune">Jaune</option>
+                      <option value="Vert">Vert</option>
+                      <option value="Bleu marine">Bleu marine</option>
+                      <option value="Violet">Violet</option>
+                      <option value="Rouge">Rouge</option>
+                      <option value="Orange">Orange</option>
+                      <option value="Blanc">Blanc</option>
+                    </select>
+                    <br/><br/>
+                    <button type="submit" id="valider" name="valider">Valider et calculer</button>
+                    <h5>Modele choisi : {{modele}}, Couleur primaire : {{couleur_primaire}}, Couleur secondaire : {{couleur_secondaire}}</h5>
+                </form>
+
+
+            <script type="module">
+
+
+              import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+              import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js';
+              import { ThreeMFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/3MFLoader.js';
+
+              const scene = new THREE.Scene();
+              const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+              const renderer = new THREE.WebGLRenderer();
+              renderer.setSize(window.innerWidth, window.innerHeight);
+              document.body.appendChild(renderer.domElement);
+
+              const controls = new OrbitControls(camera, renderer.domElement);
+
+              const loader = new ThreeMFLoader();
+              loader.load('{{ url_for('ressources', filename='test.3mf') }}', function (object) {
+                scene.add(object);
+              });
+
+              const light = new THREE.DirectionalLight(0xffffff, 1);
+              light.position.set(1, 1, 1).normalize();
+              scene.add(light);
+
+              camera.position.z = 100;
+
+              function animate() {
+                requestAnimationFrame(animate);
+                controls.update();
+                renderer.render(scene, camera);
+              }
+
+              animate();
+            </script>
+
+
+
+        </main>
+    </div>
+</body>
+</html>

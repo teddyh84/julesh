@@ -10,6 +10,7 @@ import module_accueil
 import module_jeu_rpg
 import module_jeu_animaux
 import module_jeu_drapeau
+import module_commandes_3d
 
 app = Flask(__name__)
 app.secret_key = 'session_jeux'
@@ -49,6 +50,10 @@ def jeu_animaux():
 @app.route('/jeu_drapeau', methods=['GET', 'POST'])
 def jeu_drapeau():
     return module_jeu_drapeau.main()
+
+@app.route('/commandes_3d', methods=['GET', 'POST'])
+def commandes_3d():
+    return module_commandes_3d.main()
 
 @app.route('/avis', methods=['GET', 'POST'])
 def avis():

@@ -97,6 +97,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    max-height: 100vh;
+    overflow-y: auto;
 }
 
 .main-content h1 {
@@ -114,11 +116,13 @@ body {
 /* Form styles */
 .form {
     width: 100%;
-    max-width: 400px;
     background: #f9f9f9;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-height: 100vh;
+    /*max-width: 400px;*/
+    max-width: 90vh;
 }
 
 .form label {
@@ -128,7 +132,7 @@ body {
     font-weight: bold;
 }
 
-.form input {
+.form input, .form select {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -149,6 +153,16 @@ body {
 
 .form button:hover {
     background-color: #45a049;
+}
+
+.div_vertical_align {
+  display: flex;
+  align-items: center;     /* alignement vertical */
+  justify-content: center; /* alignement horizontal */
+}
+
+.div_vertical_align * {
+    margin: 0px 10px;
 }
 
 /* Responsive Design */
